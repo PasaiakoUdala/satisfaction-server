@@ -66,10 +66,12 @@ let satisfactionResource = epilogue.resource({
 database
     .sync({ force: false })
     .then(function() {
-        app.listen(function() {
+        app.listen(3000,function() {
+            var host = app.address
+            // console.log(host.address())
             // var host = app.address().address,
             //     port = app.address().port;
 
-            console.log('Zerbitzaria entzuten');
+            console.log('Zerbitzaria entzuten http://localhost:3000');
         });
     });
