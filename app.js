@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize'),
     epilogue = require('epilogue'),
-    express = require('express'),
-    bodyParser = require('body-parser'),
     http=require('http');
 
 require('dotenv').config()
@@ -28,8 +26,9 @@ database.authenticate().then(() => {
 
 let Satisfaction = database.define('Satisfaction', {
     kokapena: Sequelize.STRING,
+    saila: Sequelize.STRING,
+    galdera: Sequelize.STRING,
     emaitza: Sequelize.INTEGER
-
 });
 
 // Initialize server
@@ -67,11 +66,7 @@ database
     .sync({ force: false })
     .then(function() {
         app.listen(3000,function() {
-            var host = app.address
-            // console.log(host.address())
-            // var host = app.address().address,
-            //     port = app.address().port;
-
+          var host = app.address;
             console.log('Zerbitzaria entzuten http://localhost:3000');
         });
     });
